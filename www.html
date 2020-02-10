@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+  <script>
+   var cities;
+   window.onload = function(){//查询所有的城市(模拟)//2
+	 cities = [["石家庄","廊坊","保定"],
+	              ["济南","青岛","烟台"],
+	              ["南京","苏州","无锡"]
+	];
+   }
+    function chg(){
+    	console.log(1);//3  
+        var p = document.getElementById("province").value;//获取省份(下标)
+        console.log(p);
+        var pcities = cities[p];//获取本省份的城市
+        var select = document.getElementById("city");//先删除旧的城市4
+        //var options = select.getElementsByTagName("option");//5
+        //for(var i=options.length-1;i>0;i--){//6
+        //	select.removeChild(options[i]);//7
+        //}
+        select.innerHTML = "<option>请选择</option>";//这句话相当于上面注释的部分
+        if(pcities){
+        for(var i=0;i<pcities.length;i++){//再追加新的城市8
+        	var option = document.createElement("option"); 
+            option.innerHTML = pcities[i];
+            select.appendChild(option);
+          }
+       }
+    }  
+  
+  </script>
+
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<script language="javascript">
+function count() {
+document.getElementById('m').innerHTML="计时已经开始！";
+setTimeout("alert('十秒钟到！')",10000)
+}
+</script>
+</head>
+<body>
+省:
+<select id="province" onchange="chg();"><!-- 1 -->
+  <option value="-1">请选择</option>
+  <option value="0">河北省</option>
+  <option value="1">山东省</option>
+  <option value="2">江苏省</option>
+</select>
+市:
+<select id="city">
+  <option>请选择</option>
+</select>
+<div id="m"></div>
+<input TYPE="button" value="计时开始" onclick="count()">
+</body>
+</html>
